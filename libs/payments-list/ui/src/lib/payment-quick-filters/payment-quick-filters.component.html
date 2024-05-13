@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row align-items-baseline">
+    <div class="col-md-4 mb-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Status</mat-label>
+        <mat-select [(ngModel)]="selectedOptions" name="options">
+          @for (keypar of paymentStatus | keyvalue; track keypar.key) {
+            <mat-option [value]="keypar.key">{{ keypar.value }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 mb-4">
+      <vn-payment-date-range [range]="range"></vn-payment-date-range>
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button
+        mat-button
+        color="primary"
+        [disabled]="!selectedOptions && !range.value.end && !range.value.start"
+        (click)="apply()">
+        Apply
+      </button>
+      @if (selectedOptions || range.value.end || range.value.start) {
+        <button mat-button color="accent" (click)="clearAll()">Clear all</button>
+      }
+    </div>
+  </div>
+</div>

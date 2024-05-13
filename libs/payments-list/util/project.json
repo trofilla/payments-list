@@ -1,0 +1,64 @@
+{
+  "name": "payments-list-util",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/payments-list/util/src",
+  "prefix": "vn",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/payments-list/util"],
+      "options": {
+        "project": "libs/payments-list/util/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/payments-list/util/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/payments-list/util/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/payments-list/util"],
+      "options": {
+        "jestConfig": "libs/payments-list/util/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint"
+    },
+    "check-api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx api-extractor run -c libs/payments-list/util/api-extractor.json"
+      }
+    },
+    "extract-api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx api-extractor run -c libs/payments-list/util/api-extractor.json --local"
+      }
+    },
+    "publish": {
+      "executor": "nx-ci-executors:publish-package",
+      "dependsOn": [
+        {
+          "target": "publish",
+          "dependencies": true
+        }
+      ]
+    },
+    "check-version": {
+      "executor": "nx-ci-executors:check-version"
+    },
+    "check-changelog": {
+      "executor": "nx-ci-executors:check-changelog"
+    }
+  },
+  "tags": ["scope:payments-list", "type:util"]
+}

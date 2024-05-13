@@ -1,0 +1,86 @@
+<ng-container
+  *ngIf="{
+    paymentsList: paymentsList$ | async,
+    error: error$ | async,
+    loading: loading$ | async
+  } as data">
+  <div class="container">
+    @if (!data.loading && !data.error) {
+      <vn-payment-quick-filters (quickFiltersChanged)="applyFilters($event)"></vn-payment-quick-filters>
+      <div class="row padding-box-vertical--md" data-role="payments-table-headers">
+        <div class="col-md-6 col-sm-6">
+          <span class="header-label">Description</span>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <span class="header-label">Amount</span>
+        </div>
+        <div class="col-md-1 col-sm-1">
+          <span class="header-label">Currency</span>
+        </div>
+        <div class="col-md-1 col-sm-1">
+          <span class="header-label">Date</span>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <span class="header-label">Status</span>
+        </div>
+      </div>
+      @for (payment of data.paymentsList.items; track payment) {
+        <vn-payments-item [payment]="payment"></vn-payments-item>
+      } @empty {
+        <div class="vn-empty-state" role="status" data-role="payments-list__empty-state">
+          <div class="vn-empty-state__content">
+            <mat-icon aria-hidden="false" aria-label="No search results icon" fontIcon="home"></mat-icon>
+
+            <p class="vn-empty-state__title" data-role="empty-state-title">No payments were found</p>
+            <p class="vn-empty-state__message" data-role="empty-state-message">Please try different criteria</p>
+          </div>
+        </div>
+      }
+    }
+    @if (data.paymentsList && data.paymentsList.items.length > 4) {
+      <mat-paginator
+        [length]="data.paymentsList.totalNumberOfItems"
+        [pageSize]="5"
+        [hidePageSize]="true"
+        (page)="onPageChange($event.pageIndex)"
+        aria-label="Select page">
+      </mat-paginator>
+    }
+
+    @if (data.loading) {
+      <div class="loading__container">
+        <div class="loading-indicator">
+          <mat-progress-spinner mode="indeterminate" diameter="100"></mat-progress-spinner>
+        </div>
+      </div>
+    }
+
+    @if (data.error) {
+      <div class="vn-empty-state vh-100" role="status" data-role="payments-list__error-state">
+        <div class="vn-empty-state__content">
+          <mat-icon aria-hidden="false" aria-label="No search results icon" fontIcon="error"></mat-icon>
+          @switch (data.error.status) {
+            @case (401) {
+              <p class="vn-empty-state__title" data-role="error-state-title__401">
+                {{ data.error.statusText }}
+              </p>
+              <p class="vn-empty-state__message">You don't have permission to view Payment list</p>
+            }
+            @case (403) {
+              <p class="vn-empty-state__title" data-role="error-state-title__403">
+                {{ data.error.statusText }}
+              </p>
+              <p class="vn-empty-state__message">Please check your credentials</p>
+            }
+            @case (403) {
+              <p class="vn-empty-state__title" data-role="error-state-title__404">
+                {{ data.error.statusText }}
+              </p>
+              <p class="vn-empty-state__message">Page not found</p>
+            }
+          }
+        </div>
+      </div>
+    }
+  </div>
+</ng-container>

@@ -1,0 +1,8 @@
+{
+  "name": "@vn/internal-payments-list-util",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/localize": ">=17.2.4",
+    "@angular/common": ">=17.2.4"
+  }
+}

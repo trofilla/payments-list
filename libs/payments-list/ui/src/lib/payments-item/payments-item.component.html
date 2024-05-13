@@ -1,0 +1,17 @@
+<div class="row divider-outer-top padding-box-vertical--md" tabindex="0" [attr.aria-label]="payment.createdAt">
+  <div class="col-md-6 col-sm-6">
+    {{ payment.description }}
+  </div>
+  <div class="col-md-2 col-sm-2">
+    {{ payment.amount.toFixed(2) }}
+  </div>
+  <div class="col-md-1 col-sm-1">
+    {{ payment.currency }}
+  </div>
+  <div class="col-md-1 col-sm-1" data-role="payments-item__date">
+    {{ payment.createdAt | date: 'shortDate' }}
+  </div>
+  <div class="col-md-2 col-sm-2" data-role="payments-item__status">
+    {{ payment.status }}
+  </div>
+</div>

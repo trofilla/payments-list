@@ -1,0 +1,100 @@
+@use '@angular/cdk';
+@import 'bootstrap';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@include cdk.a11y-visually-hidden();
+
+.app-loading {
+  width: 100px;
+  height: 100px;
+  position: static;
+  top: 50%;
+  left: 50%;
+}
+
+.app-loading .spinner {
+  height: 200px;
+  width: 200px;
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.divider-outer-top {
+  border-top: 1px solid #ccd5df;
+}
+
+.padding-box-vertical--md {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+$empty-state-icon-margin-block-end: $spacer * 1.25 !default;
+
+$empty-state-title-line-height: 1.5 !default;
+
+$empty-state-padding-x: 2.5rem !default;
+$empty-state-padding-y: 2.5rem !default;
+
+.vn-empty-state {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 0;
+  margin-inline: auto;
+  min-height: 50vh;
+  flex-direction: column;
+  gap: $spacer;
+  padding: $empty-state-padding-x $empty-state-padding-y;
+}
+
+.vn-empty-state__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacer * 0.5;
+}
+
+.vn-empty-state__title {
+  margin-block-end: 0;
+  font-size: 1.5rem;
+  line-height: $empty-state-title-line-height;
+  text-align: center;
+}
+
+.vn-empty-state__message {
+  margin-block-end: 0;
+  text-align: center;
+}
+
+.vn-empty-state__footer {
+  display: flex;
+  gap: $spacer * 0.625;
+}

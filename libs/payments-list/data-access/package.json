@@ -1,0 +1,12 @@
+{
+  "name": "@vn/internal-payments-data-access",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/localize": ">=17.2.4",
+    "@angular/core": ">=17.2.4",
+    "rxjs": ">=7.8.1",
+    "@angular/common": ">=17.2.4",
+    "@vn/internal-payments-list-util": "1.0.0",
+    "@angular/material": "~17.2.0"
+  }
+}

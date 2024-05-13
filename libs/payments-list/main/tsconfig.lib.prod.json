@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "declarationMap": false,
+    "target": "ES2022",
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true,
+    "annotateForClosureCompiler": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": true,
+    "compilationMode": "partial"
+  },
+  "exclude": ["jest.config.ts"]
+}

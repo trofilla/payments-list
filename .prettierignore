@@ -1,0 +1,9 @@
+# Ignore:
+*.json
+*.md
+*.js
+*.yaml
+
+# Except:
+
+/.nx/cache

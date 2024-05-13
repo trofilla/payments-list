@@ -1,0 +1,11 @@
+{
+  "name": "@vn/payments-list-ang",
+  "version": "1.0.0",
+  "description": "Payments list",
+  "peerDependencies": {
+    "@angular/core": ">=17.2.4",
+    "@angular/common": ">=17.2.4",
+    "@angular/router": ">=17.2.4",
+    "@vn/internal-payments-list-feature": "1.0.0"
+  }
+}

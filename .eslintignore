@@ -1,0 +1,5 @@
+node_modules
+# Ignore:
+apps/payments-app/src/index.html
+
+# Except:

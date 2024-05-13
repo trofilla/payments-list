@@ -1,0 +1,14 @@
+{
+  "name": "@vn/internal-payments-list-ui",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/localize": ">=17.2.4",
+    "@angular/core": "17.2.4",
+    "@angular/forms": "17.2.4",
+    "@angular/common": "17.2.4",
+    "@angular/platform-browser": "17.2.4",
+    "@angular/material": "~17.2.0",
+    "@vn/internal-payments-list-util": "1.0.0",
+    "moment": "^2.30.1"
+  }
+}
